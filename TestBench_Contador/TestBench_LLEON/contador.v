@@ -18,6 +18,21 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
+/*module contador(reset,clk,cont,enable);
+ input reset,clk,enable;
+ output [3:0] cont;
+ reg [3:0] cont;
+ always @(posedge clk)
+ begin
+  if (reset==1'b1)
+		cont<=0;
+  else if (enable==1'b1)
+   cont<=cont+1;
+  
+ end 
+
+endmodule
+*/
 module contador(reset,updown,clk,cont,enable,load, a,b,c,d);
  input reset,updown,clk,enable,load,a,b,c,d;
  output [3:0] cont;

@@ -22,6 +22,57 @@
 // 
 ////////////////////////////////////////////////////////////////////////////////
 
+/*module contador_tb;
+
+	// Inputs
+	reg reset;
+	reg clk;
+	reg enable;
+
+	// Outputs
+	wire [3:0] cont;
+
+	// Instantiate the Unit Under Test (UUT)
+	contador uut (
+		.reset(reset), 
+		.clk(clk), 
+		.cont(cont), 
+		.enable(enable)
+	);
+
+	initial begin
+		// Initialize Inputs
+		reset = 1'b1;
+		clk = 0;
+		enable = 0;
+		//#1 reset=1'b1;
+		//#1 reset=0;
+		#10 reset=1;
+		#21 reset=0;
+		#23 enable=1;
+		
+
+
+		// Wait 100 ns for global reset to finish
+		#100;
+        
+		// Add stimulus here
+
+	end
+	always
+	begin
+	 #5 clk =~ clk;
+	 //reset=0;
+	end
+	initial
+	begin
+	 $display("\tclk");
+	 $monitor("\t%b",clk);
+	end
+     
+endmodule
+
+*/
 module contador_tb;
 
 	// Inputs
@@ -48,7 +99,7 @@ module contador_tb;
 
 	initial begin
 		// Initialize Inputs
-		reset = 1'b1;
+		reset = 1'b0;
 		clk = 0;
 		enable = 0;
 		updown = 1;
@@ -62,9 +113,9 @@ module contador_tb;
 		
 		//#1 reset=1'b1;
 		//#1 reset=0;
-		#1 reset=1;
-		#2 reset=0;
-		#10 enable=1;
+		#17 reset=1;
+		#20 reset=0;
+		#23 enable=1;
 		#90 updown=0;
 		#170 load =1;
 		#175 a=1;
@@ -82,10 +133,9 @@ module contador_tb;
 	end
 	always
 	begin
-	 #1 clk =~ clk;
+	 #5 clk =~ clk;
 	 //reset=0;
 	end
 	
      
 endmodule
-

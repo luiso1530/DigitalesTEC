@@ -29,12 +29,15 @@ module contadovertical(Clk, reset, cuenta);
 			cuenta <= 10'b0;
 		end
 		else
-		cuenta <= cuenta +1;
 		begin
+			cuenta <= cuenta +1;
 			if (cuenta == 525)
 				begin
 					cuenta <= 0;
 				end
+			else
+			begin
+			end
 		end
 	end
 

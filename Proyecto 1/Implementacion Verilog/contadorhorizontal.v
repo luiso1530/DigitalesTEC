@@ -39,3 +39,5 @@ module contadorhorizontal(Clk, reset, cuenta);
 	end
 
 endmodule
+
+// Prueba

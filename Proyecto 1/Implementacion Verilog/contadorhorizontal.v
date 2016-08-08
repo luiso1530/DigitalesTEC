@@ -26,14 +26,14 @@ module contadorhorizontal(Clk, reset, cuenta);
 	begin
 		if (reset)
 		begin
-			cuenta = 10'b0;
+			cuenta <= 10'b0;
 		end
 		else
-		cuenta = cuenta +1;
+		cuenta <= cuenta +1;
 		begin
 			if (cuenta == 800)
 				begin
-					cuenta = 0;
+					cuenta <= 0;
 				end
 		end
 	end

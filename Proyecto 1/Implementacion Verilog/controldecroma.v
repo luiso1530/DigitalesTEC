@@ -24,7 +24,7 @@ module controldecroma(Tono,UP,down,color,reset,LP,ColorL,ColorP,ton);
 	reg[7:0] ton;
 	reg[2:0] ColorL;
 	reg[2:0] ColorP;
-	always @(Tono or color or LP or UP or down or reset)
+	always @*
 	begin
 		if(reset)
 		begin

@@ -29,7 +29,7 @@ module controlVGA(Clk,reset,Up,Down,Tono,color,Lp,Azul,Verde,Rojo,Hsinc,Vsinc);
 	wire[7:0] ton;
 	wire[2:0] ColorL;
 	wire[2:0] ColorP;
-	contadorhorizontal ContH(Clk, reset, cuentaH);
+	contadorhorizontal ContH(.clk(Clk), reset, cuentaH);
 	genradorHsinc GenH(cuentaH,Hsinc);
 	contadovertical ContV(Hsinc, reset, cuentaV);
 	generadorVsinc GenV(cuentaV,Vsinc);

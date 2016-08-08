@@ -29,7 +29,7 @@ module controldecroma(Tono,UP,down,color,reset,LP,ColorL,ColorP,ton);
 		if(reset)
 		begin
 			ton = 8'b10100100;
-			ColorL= 3'b111;
+			ColorL= 3'b000;
 			ColorP= 3'b111;
 		end
 		else if(Tono)

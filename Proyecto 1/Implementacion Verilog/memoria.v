@@ -32,9 +32,9 @@ module memoria(Posx,Posy,blank,letra,Clk,reset);
 			letra =0; 
 		end
 		//posiciones de blank (espacios donde no se pinta)
-		else if(Posx >= 640 || Posy >= 480 )	blank =1;
+		else if(Posx >= 640 || Posy >= 480 )	blank <=1;
 		//posiciones de las letras
-		else if(Posx ==400 && Posy == 260) letra =1;
+		else if(Posx ==400 && Posy == 260) letra <=1;
 		else
 		begin
 			blank =0;

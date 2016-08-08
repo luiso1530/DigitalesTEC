@@ -21,19 +21,19 @@
 module contadovertical(Clk, reset, cuenta);
 	input Clk, reset;
 	output cuenta;
-	reg[10:0] cuenta;
+	reg [9:0] cuenta;
 	always @ (posedge Clk)
 	begin
 		if (reset)
 		begin
-			cuenta = 10'b0;
+			cuenta <= 10'b0;
 		end
 		else
-		cuenta = cuenta +1;
+		cuenta <= cuenta +1;
 		begin
 			if (cuenta == 525)
 				begin
-					cuenta = 0;
+					cuenta <= 0;
 				end
 		end
 	end

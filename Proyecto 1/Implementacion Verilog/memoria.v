@@ -20,16 +20,16 @@
 //////////////////////////////////////////////////////////////////////////////////
 module memoria(Posx,Posy,blank,letra,Clk,reset);
 	input Clk,reset;
-	input[10:0]Posx;
-	input[10:0]Posy;
+	input [9:0] Posx;
+	input [9:0] Posy;
 	output blank, letra;
 	reg blank, letra;
 	always @(negedge Clk)
 	begin
 		if(reset)
 		begin
-			blank =0;
-			letra =0; 
+			blank <=0;
+			letra <=0; 
 		end
 		//posiciones de blank (espacios donde no se pinta)
 		else if(Posx >= 640 || Posy >= 480 )	blank <=1;
@@ -37,8 +37,8 @@ module memoria(Posx,Posy,blank,letra,Clk,reset);
 		else if(Posx ==400 && Posy == 260) letra <=1;
 		else
 		begin
-			blank =0;
-			letra =0;
+			blank <=0;
+			letra <=0;
 		end
 	end
 endmodule

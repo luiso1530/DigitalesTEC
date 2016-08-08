@@ -18,9 +18,10 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module controlVGA(Clk,reset,Up,Down,Tono,color,Lp,Azul,Verde,Rojo,Hsinc,Vsinc);
-	input Clk,reset,Up,Down,Tono,color,Lp;
+module controlVGA(Clock,reset,Up,Down,Tono,color,Lp,Azul,Verde,Rojo,Hsinc,Vsinc);
+	input Clock,reset,Up,Down,Tono,color,Lp;
 	output Azul,Verde,Rojo,Hsinc,Vsinc;
+	wire Clk;
 	wire[1:0] Azul;
 	wire[2:0] Rojo;
 	wire[2:0] Verde;
@@ -29,11 +30,12 @@ module controlVGA(Clk,reset,Up,Down,Tono,color,Lp,Azul,Verde,Rojo,Hsinc,Vsinc);
 	wire[7:0] ton;
 	wire[2:0] ColorL;
 	wire[2:0] ColorP;
-	contadorhorizontal ContH(.clk(Clk), reset, cuentaH);
-	genradorHsinc GenH(cuentaH,Hsinc);
-	contadovertical ContV(Hsinc, reset, cuentaV);
-	generadorVsinc GenV(cuentaV,Vsinc);
-	memoria Memo(cuentaH,cuentaV,blank,letra,Clk,reset);
-	controldecroma ContrCrom(Tono,Up,Down,color,reset,Lp,ColorL,ColorP,ton);
-	controldesalida ContrOut(Clk,ColorP,ColorL,ton,Azul,Rojo,Verde,letra,blank);
+	DivisorFrecuenciaPixel Divisor(.SysClk(Clock),.Reset(reset), .PixelClk(Clk));
+	contadorhorizontal ContH(.Clk(Clk), .reset(reset), .cuenta(cuentaH));
+	genradorHsinc GenH(.cuenta(cuentaH),.Hsinc(Hsinc));//cuenta,Hsinc
+	contadovertical ContV(.Clk(Hsinc), .reset(reset), .cuenta(cuentaV));//Clk, reset, cuenta
+	generadorVsinc GenV(.cuenta(cuentaV),.Vsinc(Vsinc));//cuenta,Hsin
+	memoria Memo(.Posx(cuentaH),.Posy(cuentaV),.blank(blank),.letra(letra),.Clk(Clk),.reset(reset));//Posx,Posy,blank,letra,Clk,reset
+	controldecroma ContrCrom(.Tono(Tono),.UP(Up),.down(Down),.color(color),.reset(reset),.LP(Lp),.ColorL(ColorL),.ColorP(ColorP),.ton(ton));//Tono,UP,down,color,reset,LP,ColorL,ColorP,ton
+	controldesalida ContrOut(.clk(Clk),.ColorP(ColorP),.ColorL(ColorL),.ton(ton),.azul(Azul),.rojo(Rojo),.verde(Verde),.letra(letra),.blank(blank));//clk,ColorP,ColorL,ton,azul,rojo,verde,letra,blank
 endmodule

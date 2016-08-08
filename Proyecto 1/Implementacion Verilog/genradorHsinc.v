@@ -19,10 +19,10 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module genradorHsinc(cuenta,Hsinc);
-	input cuenta;
+	input [9:0] cuenta;
 	output Hsinc;
 	reg Hsinc;
-	wire [9:0] cuenta;
+	//wire [9:0] cuenta;
 	always @(cuenta)
 	begin
 		if(cuenta >=655 || cuenta <= 750) Hsinc =0;

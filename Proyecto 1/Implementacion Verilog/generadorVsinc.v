@@ -18,14 +18,14 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module generadorVsinc(cuenta,Hsinc);
-	input cuenta;
-	output Hsinc;
-	reg Hsinc;
-	wire [9:0] cuenta;
+module generadorVsinc(cuenta,Vsinc);
+	input [9:0] cuenta;
+	output Vsinc;
+	reg Vsinc;
+	//wire [9:0] cuenta;
 	always @(cuenta)
 	begin
-		if(cuenta >=489 || cuenta <= 491) Hsinc =0;
-		else Hsinc = 1;
+		if(cuenta >=489 || cuenta <= 491) Vsinc =0;
+		else Vsinc = 1;
 	end
 endmodule

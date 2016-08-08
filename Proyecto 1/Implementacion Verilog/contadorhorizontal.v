@@ -21,7 +21,7 @@
 module contadorhorizontal(Clk, reset, cuenta);
 	input Clk, reset;
 	output cuenta;
-	reg[10:0] cuenta;
+	reg [9:0] cuenta;
 	always @ (posedge Clk)
 	begin
 		if (reset)
@@ -29,7 +29,7 @@ module contadorhorizontal(Clk, reset, cuenta);
 			cuenta <= 10'b0;
 		end
 		else
-		cuenta <= cuenta +1;
+		cuenta <= cuenta + 1;
 		begin
 			if (cuenta == 800)
 				begin

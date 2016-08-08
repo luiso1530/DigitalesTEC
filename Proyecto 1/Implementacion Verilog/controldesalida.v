@@ -19,11 +19,11 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module controldesalida(clk,ColorP,ColorL,ton,azul,rojo,verde,letra,blank);
-	input ton,clk,letra,blank,ColorP,ColorL;
+	input clk,letra,blank;
+	input[2:0] ColorP;
+	input[2:0] ColorL;
+	input[7:0] ton;
 	output azul,rojo,verde;
-	wire[2:0] ColorP;
-	wire[2:0] ColorL;
-	wire[7:0] ton;
 	reg[1:0] azul;
 	reg[2:0] rojo;
 	reg[2:0] verde;
